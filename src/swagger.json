@@ -1,0 +1,11 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "UserControl Documentation API",
+        "description": "This is an User Control API",
+        "version": "1.0.0",
+        "contact":{
+            "email": "fredsonchaves07@gmail.com"
+        }
+    }
+}
