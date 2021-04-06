@@ -7,5 +7,186 @@
         "contact":{
             "email": "fredsonchaves07@gmail.com"
         }
+    },
+    "paths":{
+        "/users": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "id": "string",
+                                    "name": "user name sample",
+                                    "email": "user email sample",
+                                    "admin": false,
+                                    "created_at": "2020-03-12 00:00",
+                                    "updated_at": "2020-03-12 00:00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "User email already exist"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User"],
+                "summary": "List all user",
+                "description": "List all users",
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name":{
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "string",
+                                        "name": "user name sample",
+                                        "email": "user email sample",
+                                        "admin": false,
+                                        "created_at": "2020-03-12 00:00",
+                                        "updated_at": "2020-03-12 00:00"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User without permission or not found"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "patch": {
+                "tags": ["User"],
+                "summary": "Turn user admin",
+                "description": "Turn user admin",
+                "parameters": [
+                    {
+                      "name": "user_id",
+                      "in": "path",
+                      "type": "integer",
+                      "description": "User id",
+                      "required": true
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name":{
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "string",
+                                        "name": "user name sample",
+                                        "email": "user email sample",
+                                        "admin": false,
+                                        "created_at": "2020-03-12 00:00",
+                                        "updated_at": "2020-03-12 00:00"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Get specif user",
+                "description": "Get specif user",
+                "parameters": [
+                    {
+                      "name": "user_id",
+                      "in": "path",
+                      "type": "integer",
+                      "description": "User id",
+                      "required": true
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name":{
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "example": {
+                                        "id": "string",
+                                        "name": "user name sample",
+                                        "email": "user email sample",
+                                        "admin": false,
+                                        "created_at": "2020-03-12 00:00",
+                                        "updated_at": "2020-03-12 00:00"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User already has administrator permission"
+                    }
+                }
+            }
+        }
     }
 }
